@@ -1,0 +1,221 @@
+<core:View 
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	controllerName="tcs.calculator.view.calculator">
+	
+	<Page title="Savings Calculator" enableScrolling="true">
+	
+		<headerContent>
+      		<Button icon="sap-icon://check-availability" press="preset" />
+      		<Button icon="sap-icon://excel-attachment" press="exportCSV" />
+      		<Button icon="sap-icon://print" press="print" /> 
+    	</headerContent>
+    	
+    	
+<Table id="idProductsTable"
+    inset="false">
+    <headerToolbar>
+      <Toolbar>
+        <Label text="Title Transaction Code"></Label>
+      </Toolbar>
+    </headerToolbar>
+    <columns>
+      <Column minScreenWidth="Tablet">
+        <Text text=" " />
+      </Column>
+      <Column
+        minScreenWidth="Tablet"
+        demandPopin="true">
+        <Text text="Time" />
+      </Column>
+      <Column
+        minScreenWidth="Tablet"
+        demandPopin="true"
+        hAlign="Right">
+        <Text text="Cost" />
+      </Column>
+      
+    </columns>
+    <items>
+      <ColumnListItem>
+        <cells>
+            
+                <Text text="Before" />
+                <Text id="beforeTime2" text=" test" />
+                <Text id="beforeCost2" text = "test " />
+            
+                <Text text="After" />
+                <Text id="afterTime2" text=" test" />
+                <Text id="afterCost2" text=" test" />
+            
+                <Text text="Savings" />
+                <Text id="savingsTime2" text=" test" />
+                <Text id="savingsCost2" text="test " />
+            
+                <Text text="percent" />
+                <Text id="timePercent2" text=" test" />
+                <Text id="costPercent2" text=" test" />
+            
+        </cells>
+      </ColumnListItem>
+    </items>
+  </Table>
+		<HBox> <!--  Personas Calculator -->
+			<VBox>
+				<HBox>
+					<Image src="img/sap.gif" width="125px" height="50px" class="margin10 title" />
+					<Label text="Screen Personas" class="margin10 title">
+						<layoutData>
+							<FlexItemData alignSelf="End" />
+						</layoutData>
+					</Label>
+				</HBox>
+				<Panel  class="margin10">
+					<l:Grid defaultSpan="L4 M4 S4" hSpacing="2" vSpacing="2" containerQuery="true">
+						<l:content>
+							<ObjectStatus text=" " />
+							<ObjectStatus text="Time" class="columnHeader" />
+							<ObjectStatus text="Money" class="columnHeader" />
+							
+							<ObjectStatus text="Before" state="Error"  class="italic" />
+							<ObjectStatus id="beforeTime" text="300"  state="Error" />
+							<ObjectStatus id="beforeMoney" text="$750" state="Error" />
+							
+							<ObjectStatus text="After" state="None"  class="italic" />
+							<ObjectStatus id="afterTime" text="240" state="None" />
+							<ObjectStatus id="afterMoney" text="$600" state="None" />
+							
+							<ObjectStatus text="Savings" state="Success" class="italic" />
+							<ObjectStatus id="saveTime" text="60" state="Success" />
+							<ObjectStatus id="saveMoney" text="$150" state="Success" />
+							
+							<ObjectStatus text="Percentage" state="Success" class="bold" />
+							<ObjectStatus id="timePerc" state="Success" class="bold" />
+							<ObjectStatus id="moneyPerc" state="Success" class="bold" />
+						</l:content>
+					</l:Grid>
+				
+				</Panel>
+				<Text text=" "/>
+				
+				<Label text="Time to Complete Transaction: " class="margin10"/>
+				<HBox width="100%">
+					<Slider id="original" value="20" width="250px" min="1" max="100" liveChange="sliderChanged"/>
+					<Input id="originalBox" type="Number" maxLength="3" width="50px" liveChange="boxChanged" />
+				</HBox>
+				
+				<Label text="New Time to complete Transaction: " class="margin10" />
+				<HBox>
+					<Slider id="new" value="10" width="250px" min="1" max="100" liveChange="sliderChanged"/>
+					<Input id="newBox" type="Number" maxLength="3" width="50px" liveChange="boxChanged" />
+				</HBox>
+				
+				<Label text="Number of Users: " class="margin10" />
+				<HBox>
+					<Slider id="users" value="5" width="250px" min="1" max="100" liveChange="sliderChanged"/>
+					<Input id="usersBox" type="Number" maxLength="3" width="50px" liveChange="boxChanged" />
+				</HBox>
+				
+				<Label text="Transactions Per Day: " class="margin10" />
+				<HBox>
+					<Slider id="uses" value="8" width="250px" min="1" max="100" liveChange="sliderChanged"/>
+					<Input id="usesBox" type="Number" maxLength="3" width="50px" liveChange="boxChanged" />
+				</HBox>
+				
+				<HBox>
+					<Label text="What is a Minute Worth to You?" class="margin10" />
+					<Input id="worth" type="Number" value="1" width="75px" liveChange="update" class="margin10"/>
+				</HBox>
+				
+				<HBox>
+					<VBox>
+						<Label text="Time * Users * Uses per Day * Worth = Total Money" class="margin10" />
+						<Label id="expression" class="margin10" />
+					</VBox>
+				</HBox>
+			</VBox>
+			
+			<!--  Fiori Calculator -->
+			
+			<!--
+			<Label text=" " />
+			<VBox  class="rightDisplay">
+				<HBox>
+					<Image src="img/fiori.png" width="50px" height="50px" class="margin10" />
+					<Label text="Fiori Application" class="margin10 title" >
+						<layoutData>
+							<FlexItemData alignSelf="End" />
+						</layoutData>
+					</Label>
+				</HBox>
+				
+				<Panel width="550px" class="margin10">
+					<l:Grid defaultSpan="L4 M4 S4" hSpacing="2" vSpacing="2" containerQuery="true">
+						<l:content>
+							<ObjectStatus text=" " />
+							<ObjectStatus text="Time" class="columnHeader" />
+							<ObjectStatus text="Money" class="columnHeader" />
+							
+							<ObjectStatus text="Before" state="Error" class="italic" />
+							<ObjectStatus id="beforeTime2" text="300"  state="Error" />
+							<ObjectStatus id="beforeMoney2" text="$750" state="Error" />
+							
+							<ObjectStatus text="After" state="None" class="italic" />
+							<ObjectStatus id="afterTime2" text="240" state="None" />
+							<ObjectStatus id="afterMoney2" text="$600" state="None" />
+							
+							<ObjectStatus text="Savings" state="Success" class="italic" />
+							<ObjectStatus id="saveTime2" text="60" state="Success" />
+							<ObjectStatus id="saveMoney2" text="$150" state="Success" />
+							
+							<ObjectStatus text="Percentage" state="Success" class="bold" />
+							<ObjectStatus id="timePerc2" state="Success" class="bold" />
+							<ObjectStatus id="moneyPerc2" state="Success" class="bold" />
+						</l:content>
+					</l:Grid>
+				
+				</Panel>
+				<Text text=" "/>
+				
+				<Label text="Time to Complete Transaction: " class="margin10"/>
+				<HBox width="100%">
+					<Slider id="original2" value="20" width="500px" min="1" max="100" liveChange="sliderChanged2"/>
+					<Input id="originalBox2" type="Number" maxLength="3" width="50px" liveChange="boxChanged2" />
+				</HBox>
+				
+				<Label text="New Time to complete Transaction: " class="margin10" />
+				<HBox>
+					<Slider id="new2" value="10" width="500px" min="1" max="100" liveChange="sliderChanged2"/>
+					<Input id="newBox2" type="Number" maxLength="3" width="50px" liveChange="boxChanged2" />
+				</HBox>
+				
+				<Label text="Number of Users: " class="margin10"/>
+				<HBox>
+					<Slider id="users2" value="5" width="500px" min="1" max="100" liveChange="sliderChanged2"/>
+					<Input id="usersBox2" type="Number" maxLength="3" width="50px" liveChange="boxChanged2" />
+				</HBox>
+				
+				<Label text="Transactions Per Day: " class="margin10"/>
+				<HBox>
+					<Slider id="uses2" value="8" width="500px" min="1" max="100" liveChange="sliderChanged2"/>
+					<Input id="usesBox2" type="Number" maxLength="3" width="50px" liveChange="boxChanged2" />
+				</HBox>
+				
+				<HBox>
+					<Label text="What is a Minute Worth to You?" class="margin10"/>
+					<Input id="worth2" type="Number" value="1" width="75px" liveChange="update2" class="margin10" />
+				</HBox>
+				
+				<HBox>
+					<VBox>
+						<Label text="Time * Users * Uses per Day * Worth = Total Money" class="margin10"/>
+						<Label id="expression2" class="margin10" />
+					</VBox>
+				</HBox>
+			</VBox> -->
+		</HBox>
+	</Page>
+	
+	
+</core:View>
